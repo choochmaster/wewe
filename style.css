@@ -1,0 +1,378 @@
+/* CodePen.IO Specific [Size Emulation] */
+.c_screen {
+  display: block;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 999;
+  width: 1280px;
+  height: 720px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 27px 0 0 0;
+  border: 1px solid var(--background-dark);
+  border-radius: 3px;
+  box-shadow: 4px 4px 0 rgba(0,0,0,.2);
+  transition: all 0.3s ease-in;
+  background-color: var(--background);
+}
+
+.c_screen.active {
+  width: 100%;
+  height: 100%;
+}
+
+.c_screen > .c_titlebar {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 27px;
+  background-color: var(--background-darker);
+  border-bottom: 1px solid var(--background-darker);
+  user-select: none;
+}
+
+.c_screen > .c_titlebar > .c_title {
+  display: block;
+  float: left;
+  height: 27px;
+  width: auto;
+  line-height: 27px;
+  text-align: center;
+  padding: 0 10px;
+  font-size: 14px;
+  curosr: pointer;
+  color: var(--text);
+}
+
+.c_screen > .c_titlebar > .c_control {
+  display: block;
+  float: right;
+  width: 27px;
+  height: 27px;
+  line-height: 27px;
+  text-align: center;
+  cursor: pointer;
+  background: var(--background-light);
+  transition: all ease-in .15s;
+  color: var(--text);
+}
+
+.c_screen > .c_titlebar > .c_control.c_exit {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 35px;
+}
+
+.c_screen > .c_titlebar > .c_control:hover {
+  background: var(--background-lighter);
+}
+
+.c_screen > .c_titlebar > .c_control.c_exit:hover {
+  background: var(--red-soft);
+}
+
+.c_ux {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 300px;
+  background: rgba(13,13,13,0.3);
+  color: #FAFAFA;
+}
+
+.c_ux a {
+  display: inline-block;
+  position: relative;
+  margin: 10px 5px;
+  padding: 0 10px;
+  color: #FAFAFA;
+  background: rgba(13,13,13,0.3);
+  border: 1px solid rgba(13,13,13,0.5);
+  cursor: pointer;
+  user-select: none;
+  -ms-user-select: none;
+}
+
+.c_ux textarea {
+  display: block;
+  width: calc(100% - 20px);
+  height: 100px;
+  background: rgba(13,13,13,0.5);
+  margin: 10px;
+  border: none;
+}
+
+/* End */
+
+:root {
+  --purple: #673ADB;
+  --background: #152032;
+  --background-light: #132632;
+  --background-lighter: #1a3444;
+  --background-darker: #121F2C;
+  --background-accent: #673ADB;
+  --red-soft: #CD5451;
+  --text: #FAFAFA;
+  --text-accent: #37DBD0;
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+}
+ 
+*::-webkit-scrollbar-track {
+  background: rgba(150,150,150,0.7);
+}
+ 
+*::-webkit-scrollbar-thumb {
+  background: #666; 
+}
+
+body, html {
+  display: block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  font-family: 'Montserrat';
+  background: var(--background-accent);
+}
+
+.container {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+.container .list {
+  width: 100%;
+  height: 100%;
+  background: var(--background-light);
+  padding: 2em;
+  margin: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.container .list .theme_li {
+  display: block;
+  position: relative;
+  height: 60px;
+  width: 100%;
+  border-radius: 5px;
+  padding: 0;
+  margin: 1em 0;
+  overflow: hidden;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  background-color: var(--background-darker);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  cursor: pointer;
+}
+
+.container .list .theme_li .theme_header {
+  display: flex;
+  position: relative;
+  height: 60px;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  background-color: var(--background-darker);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+.container .list .theme_li.active .theme_header {
+  display: flex;
+  position: relative;
+  height: 60px;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  background-color: var(--background-accent);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+.container .list .theme_li.active {
+  height: 600px;
+}
+
+.container .list .theme_li:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.container .list .theme_li .theme_header .icon {
+  flex-grow: 0;
+  height: 60px;
+  width: 60px;
+  background: var(--background-accent);
+  color: var(--background-light);
+  font-size: 1.7em;
+  text-align: center;
+  line-height: 60px;
+  margin: 0 10px 0 0;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+.container .list .theme_li .theme_header .icon.right {
+  margin: 0 0 0 10px;
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.container .list .theme_li .theme_header .icon i {
+  pointer-events: none;
+  display: block;
+}
+
+.container .list .theme_li .theme_header .icon.right:hover {
+  color: var(--text);
+}
+
+.container .list .theme_li .theme_header .theme_title {
+  display: block;
+  height: 60px;
+  line-height: 60px;
+  flex-grow: 1;
+  flex-basis: 0;
+  padding: 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  box-sizing: border-box;
+}
+
+.container .list .theme_li.active .theme_header .theme_title {
+  opacity: 0;
+  z-index: 0;
+}
+
+.container .list .theme_li .theme_header .theme_title.title_name {
+  font-size: 16px;
+  font-weight: 400;
+  z-index: 1;
+  opacity: 1;
+  flex-grow: 2;
+  flex-basis: 0;
+}
+
+.container .list .theme_li .theme_content {
+  display: block;
+  height: 540px;
+  width: 100%;
+  position: relative;
+  background-image: url('https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-486241.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  
+  /* Latr, make this an element not a thingie */
+  /*-webkit-mask-image:-webkit-gradient(linear, left middle, right middle, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));*/
+}
+
+.container .list .theme_li .theme_content .theme_container {
+  display: flex;
+  width: 100%;
+  height: 540px;
+  margin: 0;
+  padding: 15px;
+  box-sizing: border-box;
+  background: linear-gradient(90deg, rgba(21,16,52,1) 0%, rgba(21,16,52,0.65) 37%, rgba(0,212,255,0) 100%);
+  cursor: default;
+  flex-direction: column;
+}
+
+.container .list .theme_li .theme_content .theme_container h1 {
+  display: block;
+  flex: 0;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  color: var(--text-accent);
+}
+
+.container .list .theme_li .theme_content .theme_container h1 span {
+  height: 40px;
+  line-height: 40px;
+  font-size: 15px;
+  color: var(--text);
+  font-weight: 300;
+  margin-left: 4px;
+}
+
+.container .list .theme_li .theme_content .theme_container h2 {
+  display: block;
+  flex: 0;
+  width: 100%;
+  height: 20px;
+  line-height: 20px;
+  font-size: 15px;
+  color: var(--text);
+  font-weight: 400;
+  margin-top: -5px;
+}
+
+.container .list .theme_li .theme_content .theme_container .theme_description {
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex: 1;
+  box-sizing: border-box;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.container .list .theme_li .theme_content .theme_container .theme_description p {
+  height: 100%;
+  width: auto;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 400;
+  flex-basis: 45%;
+}
+.container .list .theme_li .theme_content .theme_container .theme_description .theme_image {
+  flex-basis: 45%;
+}
+.container .list .theme_li .theme_content .theme_container .theme_description .theme_image img {
+  width: 100%;
+  height: auto;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.container .list .theme_li .theme_content .theme_container .install_btn {
+  display: block;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  width: auto;
+  height: 30px;
+  color: var(--text);
+  background-color: var(--background-accent);
+  border-radius: 3px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 13px;
+  padding: 0 10px;
+  line-height: 30px;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
